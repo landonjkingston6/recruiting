@@ -12,31 +12,37 @@
             })
             .then(data => {
                 console.log('Fetched data:', data); // Debug: log the raw data
-                const rows = data.split('\n').slice(1); // Skip header
-                const playersDiv = document.getElementById('players');
-                rows.forEach(row => {
-                    const cols = row.split(',');
-                    if (cols.length >= 1 && cols[0].trim()) { // At least name
-                        const name = cols[0] || 'Unknown';
-                        const grade = cols[1] || '';
-                        const position = cols[2] || '';
-                        const offers = cols[3] ? `<p>Offers: ${cols[3]}</p>` : '';
-                        const stats = cols[4] || '';
-                        const highlights = cols[5] ? `<p>Highlights: ${cols[5]}</p>` : '';
-                        const bio = cols[6] ? `<p>${cols[6]}</p>` : '';
+                Papa.parse(data, {
+                    complete: function(results) {
+                        const rows = results.data.slice(1); // Skip header row
+                        const playersDiv = document.getElementById('players');
+                        rows.forEach(row => {
+                            if (row.length >= 1 && row[0] && row[0].trim()) { // At least name
+                                const L_Name = row[0] || 'Unknown';
+                                const F_Name = row[1] || '';
+                                const position = row[2] || '';
+                                const offers = row[3] ? `<p>Offers: ${row[3]}</p>` : '';
+                                const stats = row[4] || '';
+                                const highlights = row[5] ? `<p>Highlights: ${row[5]}</p>` : '';
+                                const bio = row[6] ? `<p>${row[6]}</p>` : '';
 
-                        const card = document.createElement('div');
-                        card.className = 'player-card';
-                        card.innerHTML = `
-                            <h3>${name}</h3>
-                            <h5>${grade}</h5>
-                            <p>Position: ${position}</p>
-                            ${offers}
-                            <p>Stats: ${stats}</p>
-                            ${highlights}
-                            ${bio}
-                        `;
-                        playersDiv.appendChild(card);
+                                const card = document.createElement('div');
+                                card.className = 'player-card';
+                                card.innerHTML = `
+                                    <h3>${L_Name}</h3>
+                                    <h5>${F_Name}</h5>
+                                    <p>Position: ${position}</p>
+                                    ${offers}
+                                    <p>Stats: ${stats}</p>
+                                    ${highlights}
+                                    ${bio}
+                                `;
+                                playersDiv.appendChild(card);
+                            }
+                        });
+                    },
+                    error: function(error) {
+                        console.error('Error parsing CSV:', error);
                     }
                 });
             })
