@@ -38,16 +38,25 @@
                 const playersDiv = document.getElementById('players');
                 rows.forEach(row => {
                     const cols = row.split(',');
-                    if (cols.length >= 3) { // Assuming Name, Position, Stats
+                    if (cols.length >= 1 && cols[0].trim()) { // At least name
+                        const name = cols[0] || 'Unknown';
+                        const grade = cols[1] || '';
+                        const position = cols[2] || '';
+                        const offers = cols[3] ? `<p>Offers: ${cols[3]}</p>` : '';
+                        const stats = cols[4] || '';
+                        const highlights = cols[5] ? `<p>Highlights: ${cols[5]}</p>` : '';
+                        const bio = cols[6] ? `<p>${cols[6]}</p>` : '';
+
                         const card = document.createElement('div');
                         card.className = 'player-card';
                         card.innerHTML = `
-                            <h3>${cols[0]}</h3>
-                            <h5>${cols[1]}</h5>
-                            <p>Position: ${cols[2]}</p>
-                            <p>Offers: ${cols[3]}</p>
-                            <p>Highlights: ${cols[5]}</p>
-                            <p>${cols[6]}</p>
+                            <h3>${name}</h3>
+                            <h5>${grade}</h5>
+                            <p>Position: ${position}</p>
+                            ${offers}
+                            <p>Stats: ${stats}</p>
+                            ${highlights}
+                            ${bio}
                         `;
                         playersDiv.appendChild(card);
                     }
