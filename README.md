@@ -1,3 +1,3 @@
 # whsball PlayerCards
 
-A project for school player cards website.
+Project for Westlake High School Football Players that are being recruited

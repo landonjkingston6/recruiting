@@ -1,6 +1,4 @@
-  // Replace with your Google Sheet's export CSV URL
-        // Get the spreadsheet ID from the edit URL (e.g., https://docs.google.com/spreadsheets/d/YOUR_ID/edit)
-        // Then use: https://docs.google.com/spreadsheets/d/YOUR_ID/export?format=csv&gid=0
+
         const sheetUrl = 'https://docs.google.com/spreadsheets/d/1RwtkcGSaMuyU9qNgUYW9XqnUH7NShWy5NsekvXO2WHQ/export?format=csv&gid=0';
 
         fetch(sheetUrl)
