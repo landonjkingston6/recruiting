@@ -24,18 +24,26 @@
                                 const offers = row[3] || '';
                                 const hudl = row[4] || '';
                                 const imageURL = row[5] || '';
-                                const bio = row[6] || '';
+                                const height = row[6] || '';
+                                const number = row[7] || '';
+                                const gradYear = row[8] || '';
 
                                 const card = document.createElement('div');
                                 card.className = 'player-card';
                                 card.innerHTML = `
-                                    <h3 class="lName">${L_Name}</h3>
-                                    <h5 class=fName>${F_Name}</h5>
-                                    <p class="position">Position: ${position}</p>
-                                    <p class="offers">Offers: ${offers}
-                                    <p class="hudl">Hudl: ${hudl}</p>
-                                    <img class="playerBioImage" src="images/playerImages/${imageURL}">
-                                    <p class="bio">Bio: ${bio}</p>
+                                    <h5 class="number">${number}</h5>
+                                    <div class="player-card-grid">
+                                        <h3 class="lName">${L_Name}</h3>
+                                        <h5 class=fName>${F_Name}</h5>
+                                        <h5 class="gradYear">Class of ${gradYear}</h5>
+                                        <p class="position">Position:<span class="textAdjust"> ${position}</span></p>
+                                        <img class="playerBioImage" src="images/playerImages/${imageURL}">
+                                        <p class="offers">Offers:<span class="textAdjust"> ${offers}</span></p>
+                                        <a href="${hudl}" class="hudl" target="_blank">View Hudl</a>
+                                        <p class="height">Height:<span class="textAdjust"> ${height}</span></p>
+                                        <button class="playerButton">View Profile</button>
+                                    </div>
+                                   
                                 `;
                                 playersDiv.appendChild(card);
                             }
