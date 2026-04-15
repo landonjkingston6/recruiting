@@ -31,6 +31,7 @@
                                 const card = document.createElement('div');
                                 card.className = 'player-card';
                                 card.innerHTML = `
+                                    <div class="cardOverlay"></div>
                                     <h5 class="number">${number}</h5>
                                     <div class="player-card-grid">
                                         <h3 class="lName">${L_Name}</h3>
