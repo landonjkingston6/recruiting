@@ -27,10 +27,50 @@
     background: #e0e0e0;
     border-radius: 1rem;
     user-select: none;
-     box-shadow: 0px 0px .75rem #00000000;
+    box-shadow: 0px 0px .75rem #00000000;
+    perspective: 1400px;
+    transform-style: preserve-3d;
+    transition: transform .8s ease;
 }
 .player-card:hover{
-     box-shadow: 0px 0px .75rem #000000a6;
+    box-shadow: 0px 0px .75rem #000000a6;
+}
+.player-card.flipped {
+    transform: rotateY(180deg);
+}
+.player-card-face {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    backface-visibility: hidden;
+    border-radius: 1rem;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    pointer-events: none;
+}
+.player-card-face.back {
+    transform: rotateY(180deg);
+    background: #0d1c36;
+    z-index: 1;
+}
+.player-card-face.front {
+    background: transparent;
+    z-index: 2;
+    pointer-events: auto;
+}
+.player-card.flipped .player-card-face.front {
+    pointer-events: none;
+}
+.player-card.flipped .player-card-face.back {
+    pointer-events: auto;
+    z-index: 2;
+}
+.player-card-face.back .playerButton,
+.player-card-face.front .playerButton {
+    cursor: pointer;
 }
 .player-card p {
     text-transform: capitalize;
@@ -38,6 +78,84 @@
     font-size: 1rem;
     color: #c2b584;
 }
+.back-content {
+    position: absolute;
+    inset: 0;
+    padding: 2rem;
+    display: grid;
+    gap: 1rem;
+    align-content: center;
+    justify-items: flex-start;
+    color: #e0e0e0;
+    text-transform: uppercase;
+    display:grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-areas:
+    'name name height position'
+    'name name weight .'
+    'bench fourty broadJ GPA'
+    'squat hundred vertJ ACT'
+    'clean shuttle . .'
+    'back coachEmail coachEmail coachEmail'
+    ;
+}
+.bench {
+    grid-area:bench;
+}
+.squat {
+    grid-area:squat;
+}
+.clean {
+    grid-area:clean;
+}
+.fourty {
+    grid-area:fourty;
+}
+.hundred {
+    grid-area:hundred;
+}
+.shuttle {
+    grid-area:shuttle;
+}
+.broadJ {
+    grid-area:broadJ;
+}
+.vertJ {
+    grid-area:vertJ;
+}
+.gpa {
+    grid-area:GPA;
+}
+.act {
+    grid-area:ACT;
+}
+.coachEmail {
+    grid-area:coachEmail
+}
+.fullName {
+    grid-area:name;
+}
+.back-content .playerButton {
+    grid-area:back;
+}
+.back-content h3 {
+    margin: 0;
+    font-size: 2rem;
+    letter-spacing: 0.04em;
+}
+.back-item {
+    font-size: 1.1rem;
+}
+.back-item span {
+    margin-left: 0.35rem;
+    color: #c2b584;
+    font-weight: 700;
+    text-transform: none;
+}
+.back-content .hudl {
+    margin-top: 0.75rem;
+}
+
 .player-card .textAdjust {
     color:#e0e0e0;
     font-weight: bold;
