@@ -198,7 +198,7 @@ html {
     grid-area:last;
     color:#7bafd4;
     text-shadow: 2px 2px 1px #e0e0e0;
-    font-size: 4rem;
+    font-size: 2rem;
     font-family: "Montserrat", sans-serif;
     align-self: flex-start;
     margin-top:-.8rem;
@@ -209,7 +209,7 @@ html {
     font-size: 2rem;
     font-family: "Montserrat", sans-serif;
     align-self:flex-end;
-    margin-left:2rem;
+    
 }
 .gradYear {
     grid-area:gradyear;

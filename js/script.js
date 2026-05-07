@@ -83,7 +83,7 @@
                                             <h5 class=fName>${F_Name}</h5>
                                             <h5 class="gradYear">Class of ${gradYear}</h5>
                                             <p class="position">Position:<span class="textAdjust"> ${position}</span></p>
-                                            <img class="playerBioImage" src="images/playerImages/${imageURL}">
+                                            <img class="playerBioImage" src="/images/playerImages/${imageURL}">
                                             <p class="offers">Offers:<span class="textAdjust"> ${offers}</span></p>
                                             <a href="${hudl}" class="hudl" target="_blank">View Hudl</a>
                                             <p class="height">Height:<span class="textAdjust"> ${height}</span></p>
